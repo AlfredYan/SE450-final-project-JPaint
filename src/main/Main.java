@@ -1,5 +1,7 @@
 package main;
 
+import java.io.Console;
+
 import controller.IPaintController;
 import controller.JPaintController;
 import view.GuiUiModule.Gui;

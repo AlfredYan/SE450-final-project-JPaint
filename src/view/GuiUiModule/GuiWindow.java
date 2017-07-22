@@ -20,7 +20,7 @@ public class GuiWindow extends JFrame implements IGuiWindow {
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
     private final PaintCanvas canvas;
-
+ 
     public GuiWindow(){
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,6 +29,11 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         JPanel window = createWindow();
         canvas = new PaintCanvas();
         window.add(canvas, BorderLayout.CENTER);
+        
+        // add mouse event handlers to canvas
+        GuiMouseHandler mouseHandler = new GuiMouseHandler(canvas);
+        canvas.addMouseListener(mouseHandler);
+        canvas.addMouseMotionListener(mouseHandler);
 		validate();
     }
 

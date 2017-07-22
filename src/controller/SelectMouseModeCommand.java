@@ -16,6 +16,7 @@ public class SelectMouseModeCommand implements ICommand {
 	public void run() {
 		MouseMode mouseModeChoice = _uiModule.getDialogResponse(_mouseModeSettings);
 		_mouseModeSettings.setCurrentMouseMode(mouseModeChoice);
+		System.out.println(_mouseModeSettings.getCurrentMouseMode());
 	}
 
 }
