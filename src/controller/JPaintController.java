@@ -15,6 +15,11 @@ public class JPaintController implements IPaintController {
         _settings.getShadingTypeSettings().setCurrentShadingType(ShadingType.FILLED_IN);
         _settings.getMouseModeSettings().setCurrentMouseMode(MouseMode.DRAW);
     }
+    
+    @Override
+    public Shape getSelectedShape() {
+		return _settings.getDrawShapeSettings().getCurrentShape();
+    }
 
     @Override
     public void run() {
@@ -23,5 +28,9 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, new SelectSecondaryColorCommand(_settings.getSecondaryColorSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, new SelectShadingTypeCommand(_settings.getShadingTypeSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, new SelectMouseModeCommand(_settings.getMouseModeSettings(), _uiModule));
+        
+        // pass the JPainterController to ui
+        _uiModule.getJPainterController(this);
+        
     }
 }
