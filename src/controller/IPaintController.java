@@ -4,5 +4,8 @@ import viewInterfaces.IDialogChoice;
 
 public interface IPaintController {
     void run();
-    Shape getSelectedShape();
+    ShapeType getSelectedShape();
+    PaintColor getPrimaryColor();
+    PaintColor getSecondaryColor();
+    ShadingType getShadingType();
 }

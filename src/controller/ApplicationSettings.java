@@ -3,13 +3,13 @@ package controller;
 import viewInterfaces.IDialogChoice;
 
 class ApplicationSettings {
-    private ShapeSettings drawShapeSettings = new ShapeSettings();
+    private ShapeTypeSettings drawShapeSettings = new ShapeTypeSettings();
     private PrimaryColorSettings primaryColorSettings = new PrimaryColorSettings();
     private SecondaryColorSettings secondaryColorSettings = new SecondaryColorSettings();
     private ShadingTypeSettings shadingTypeSettings = new ShadingTypeSettings();
     private MouseModeSettings mouseModeSettings = new MouseModeSettings();
 
-    ShapeSettings getDrawShapeSettings() {
+    ShapeTypeSettings getDrawShapeSettings() {
         return drawShapeSettings;
     }
     

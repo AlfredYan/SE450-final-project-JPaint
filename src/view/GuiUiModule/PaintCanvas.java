@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.JComponent;
 
+import controller.PaintColor;
+import controller.ShapeType;
 import modelInterfaces.IShape;
 
 public class PaintCanvas extends JComponent {
@@ -36,4 +38,9 @@ public class PaintCanvas extends JComponent {
 		height = y - startY;
 		paint(getGraphics());
 	}
+	
+	public void createShape(ShapeType shapeType, PaintColor primaryColor, PaintColor secondaryColor) {
+		
+	}
+	
 }

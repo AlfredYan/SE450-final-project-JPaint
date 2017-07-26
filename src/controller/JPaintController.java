@@ -9,16 +9,11 @@ public class JPaintController implements IPaintController {
 
     public JPaintController(UIModule uiModule){
         _uiModule = uiModule;
-        _settings.getDrawShapeSettings().setCurrentShape(Shape.ELLIPSE);
+        _settings.getDrawShapeSettings().setCurrentShape(ShapeType.ELLIPSE);
         _settings.getPrimaryColorSettings().setCurrentPrimaryColor(PaintColor.BLACK);
         _settings.getSecondaryColorSettings().setCurrentSecondaryColor(PaintColor.BLUE);
         _settings.getShadingTypeSettings().setCurrentShadingType(ShadingType.FILLED_IN);
         _settings.getMouseModeSettings().setCurrentMouseMode(MouseMode.DRAW);
-    }
-    
-    @Override
-    public Shape getSelectedShape() {
-		return _settings.getDrawShapeSettings().getCurrentShape();
     }
 
     @Override
@@ -33,4 +28,24 @@ public class JPaintController implements IPaintController {
         _uiModule.getJPainterController(this);
         
     }
+    
+    @Override
+    public ShapeType getSelectedShape() {
+		return _settings.getDrawShapeSettings().getCurrentShape();
+    }
+
+	@Override
+	public PaintColor getPrimaryColor() {
+		return _settings.getPrimaryColorSettings().getCurrentPrimaryColor();
+	}
+
+	@Override
+	public PaintColor getSecondaryColor() {
+		return _settings.getSecondaryColorSettings().getCurrentSecondaryColor();
+	}
+
+	@Override
+	public ShadingType getShadingType() {
+		return _settings.getShadingTypeSettings().getCurrentShadingType();
+	}
 }
