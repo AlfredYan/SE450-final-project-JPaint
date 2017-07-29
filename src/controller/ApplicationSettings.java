@@ -2,30 +2,30 @@ package controller;
 
 import viewInterfaces.IDialogChoice;
 
-class ApplicationSettings {
+public class ApplicationSettings {
     private ShapeTypeSettings drawShapeSettings = new ShapeTypeSettings();
     private PrimaryColorSettings primaryColorSettings = new PrimaryColorSettings();
     private SecondaryColorSettings secondaryColorSettings = new SecondaryColorSettings();
     private ShadingTypeSettings shadingTypeSettings = new ShadingTypeSettings();
     private MouseModeSettings mouseModeSettings = new MouseModeSettings();
 
-    ShapeTypeSettings getDrawShapeSettings() {
+    public ShapeTypeSettings getDrawShapeSettings() {
         return drawShapeSettings;
     }
     
-    PrimaryColorSettings getPrimaryColorSettings() {
+    public PrimaryColorSettings getPrimaryColorSettings() {
     		return primaryColorSettings;
     }
     
-    SecondaryColorSettings getSecondaryColorSettings() {
+    public SecondaryColorSettings getSecondaryColorSettings() {
     		return secondaryColorSettings;
     }
     
-    ShadingTypeSettings getShadingTypeSettings() {
+    public ShadingTypeSettings getShadingTypeSettings() {
     		return shadingTypeSettings;
     }
     
-    MouseModeSettings getMouseModeSettings() {
+    public MouseModeSettings getMouseModeSettings() {
     		return mouseModeSettings;
     }
 }

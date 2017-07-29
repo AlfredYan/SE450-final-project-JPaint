@@ -22,15 +22,15 @@ public class GuiWindow extends JFrame implements IGuiWindow {
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
     private final PaintCanvas canvas;
-    private IPaintController paintController;
+//    private IPaintController paintController;
  
-    public GuiWindow(){
+    public GuiWindow(PaintCanvas canvas){
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
         setSize(defaultWidth, defaultHeight);
         JPanel window = createWindow();
-        canvas = new PaintCanvas();
+        this.canvas = canvas;
         window.add(canvas, BorderLayout.CENTER);
         
 //        // add mouse event handlers to canvas
@@ -102,12 +102,13 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         return contentPane;
     }
 
-	@Override
-	public void getJPainterController(IPaintController jPaintController) {
-		paintController = jPaintController;
-//      // add mouse event handlers to canvas
-      GuiMouseHandler mouseHandler = new GuiMouseHandler(canvas, paintController);
-      canvas.addMouseListener(mouseHandler);
-      canvas.addMouseMotionListener(mouseHandler);
-	}
+//	@Override
+//	public void getJPainterController(IPaintController jPaintController) {
+//		paintController = jPaintController;
+////      // add mouse event handlers to canvas
+//      GuiMouseHandler mouseHandler = new GuiMouseHandler(canvas, paintController);
+////      canvas.setPainterController(paintController);
+//      canvas.addMouseListener(mouseHandler);
+//      canvas.addMouseMotionListener(mouseHandler);
+//	}
 }

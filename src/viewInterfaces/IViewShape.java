@@ -1,5 +1,10 @@
 package viewInterfaces;
 
-public interface IViewShape {
+import controller.PaintColor;
 
+public interface IViewShape {
+	void displayOutline(PaintColor color);
+	void displayFilled(PaintColor color);
+	PaintColor getPrimaryColor();
+	PaintColor getSecondaryColor();
 }

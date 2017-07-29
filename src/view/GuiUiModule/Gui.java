@@ -36,9 +36,9 @@ public class Gui implements UIModule {
 
 
 
-	@Override
-	public void getJPainterController(IPaintController paintController) {
-		// TODO Auto-generated method stub
-		gui.getJPainterController(paintController);
-	}
+//	@Override
+//	public void getJPainterController(IPaintController paintController) {
+//		// TODO Auto-generated method stub
+//		gui.getJPainterController(paintController);
+//	}
 }

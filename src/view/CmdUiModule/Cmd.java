@@ -19,9 +19,9 @@ public class Cmd implements UIModule {
         return null;
     }
 
-	@Override
-	public void getJPainterController(IPaintController paintController) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void getJPainterController(IPaintController paintController) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }

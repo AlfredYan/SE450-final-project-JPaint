@@ -10,7 +10,7 @@ public class PrimaryColorSettings implements IDialogChoice {
 		this.currentPrimaryColor = currentPrimaryColor;
 	}
 	
-	PaintColor getCurrentPrimaryColor() {
+	public PaintColor getCurrentPrimaryColor() {
 		return currentPrimaryColor;
 	}
 	

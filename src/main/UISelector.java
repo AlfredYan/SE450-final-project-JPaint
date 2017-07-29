@@ -6,12 +6,12 @@ import viewInterfaces.InvalidUIException;
 import viewInterfaces.UIModule;
 
 public class UISelector {
-    public UIModule getUi(String arg) throws InvalidUIException {
-        UIType uiType;
-        uiType = getUiType(arg);
-        UIModule ui = UIFactory.createUI(uiType);
-        return ui;
-    }
+//    public UIModule getUi(String arg) throws InvalidUIException {
+//        UIType uiType;
+//        uiType = getUiType(arg);
+//        UIModule ui = UIFactory.createUI(uiType);
+//        return ui;
+//    }
 
     private UIType getUiType(String uiArgument) throws IllegalArgumentException {
         String[] argParts = uiArgument.split("=");

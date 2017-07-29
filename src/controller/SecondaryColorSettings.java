@@ -9,7 +9,7 @@ public class SecondaryColorSettings implements IDialogChoice {
 		this.currentSecondaryColor = currentSecondaryColor;
 	}
 	
-	PaintColor getCurrentSecondaryColor() {
+	public PaintColor getCurrentSecondaryColor() {
 		return currentSecondaryColor;
 	}
 	

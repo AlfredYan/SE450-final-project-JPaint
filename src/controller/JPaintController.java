@@ -5,10 +5,11 @@ import viewInterfaces.UIModule;
 
 public class JPaintController implements IPaintController {
     private final UIModule _uiModule;
-    private final ApplicationSettings _settings = new ApplicationSettings();
+    private final ApplicationSettings _settings;
 
-    public JPaintController(UIModule uiModule){
+    public JPaintController(UIModule uiModule, ApplicationSettings settings){
         _uiModule = uiModule;
+        _settings = settings;
         _settings.getDrawShapeSettings().setCurrentShape(ShapeType.ELLIPSE);
         _settings.getPrimaryColorSettings().setCurrentPrimaryColor(PaintColor.BLACK);
         _settings.getSecondaryColorSettings().setCurrentSecondaryColor(PaintColor.BLUE);
@@ -25,7 +26,7 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, new SelectMouseModeCommand(_settings.getMouseModeSettings(), _uiModule));
         
         // pass the JPainterController to ui
-        _uiModule.getJPainterController(this);
+//        _uiModule.getJPainterController(this);
         
     }
     

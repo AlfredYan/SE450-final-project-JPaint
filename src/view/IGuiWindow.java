@@ -9,5 +9,5 @@ import controller.JPaintController;
 
 public interface IGuiWindow {
     JButton getButton(EventName eventName);
-    void getJPainterController(IPaintController jPaintController);
+//    void getJPainterController(IPaintController jPaintController);
 }
