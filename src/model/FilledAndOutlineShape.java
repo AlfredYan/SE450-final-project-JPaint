@@ -13,8 +13,8 @@ public class FilledAndOutlineShape implements IDisplayableShape {
 
 	@Override
 	public void display() {
-		_viewShape.displayOutline(_viewShape.getPrimaryColor());
 		_viewShape.displayFilled(_viewShape.getSecondaryColor());
+		_viewShape.displayOutline(_viewShape.getPrimaryColor());
 	}
 
 }

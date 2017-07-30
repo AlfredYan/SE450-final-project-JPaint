@@ -5,6 +5,7 @@ import controller.CreateShapeCommand;
 import model.ShapeFactory;
 import model.DisplayableShapeFctory;
 import model.ShapeList;
+import modelInterfaces.IShapeList;
 import view.CmdUiModule.Cmd;
 import view.GuiUiModule.Gui;
 import view.GuiUiModule.GuiMouseHandler;

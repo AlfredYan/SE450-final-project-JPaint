@@ -21,15 +21,14 @@ public class GuiEllipse implements IViewShape{
 	public void displayOutline(PaintColor color) {
 		Graphics2D graphics = _canvas.getGraphics2D();
 		graphics.setStroke(new BasicStroke(5));
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(color.getColor());
 		graphics.drawOval(_shape.getStartX(), _shape.getStartY(), _shape.getWidth(), _shape.getHeight());
 	}
 
 	@Override
 	public void displayFilled(PaintColor color) {
-		// TODO Auto-generated method stub
 		Graphics2D graphics = _canvas.getGraphics2D();
-		graphics.setColor(Color.BLUE);
+		graphics.setColor(color.getColor());
 		graphics.fillOval(_shape.getStartX(), _shape.getStartY(), _shape.getWidth(), _shape.getHeight());
 	}
 

@@ -5,6 +5,7 @@ import controller.ApplicationSettings;
 import controller.IPaintController;
 import controller.JPaintController;
 import model.ShapeList;
+import modelInterfaces.IShapeList;
 import view.GuiUiModule.Gui;
 import view.UIFactory;
 import view.UIType;

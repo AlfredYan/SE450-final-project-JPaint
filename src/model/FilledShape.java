@@ -13,7 +13,7 @@ public class FilledShape implements IDisplayableShape {
 
 	@Override
 	public void display() {
-		_viewShape.displayFilled(_viewShape.getSecondaryColor());
+		_viewShape.displayFilled(_viewShape.getPrimaryColor());
 	}
 
 }
