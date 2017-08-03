@@ -5,7 +5,6 @@ import controller.CreateShapeCommand;
 import model.ShapeFactory;
 import model.DisplayableShapeFctory;
 import model.ShapeList;
-import modelInterfaces.IShapeList;
 import view.CmdUiModule.Cmd;
 import view.GuiUiModule.Gui;
 import view.GuiUiModule.GuiMouseHandler;
@@ -27,6 +26,7 @@ public class UIFactory {
                 ui = new Gui(new GuiWindow(canvas));
                 GuiMouseHandler mouseHandler = new GuiMouseHandler(new CreateShapeCommand(new ShapeFactory(settings, shapeList, 
                 												new GuiViewShapeFactory(canvas), new DisplayableShapeFctory())));
+                settings.getMouseModeSettings().registerObserver(mouseHandler);
                 canvas.addMouseListener(mouseHandler);
                 shapeList.registerObserver(canvas);
                 break;

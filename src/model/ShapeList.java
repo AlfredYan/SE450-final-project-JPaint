@@ -26,8 +26,7 @@ public class ShapeList implements IShapeList {
 		_canvas = canvas;
 	}
 
-	@Override
-	public void notifyObesrver() {
+	private void notifyObesrver() {
 		_canvas.update(_shapelist);
 	}
 	

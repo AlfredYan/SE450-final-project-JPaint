@@ -15,7 +15,7 @@ import viewInterfaces.EventName;
 import java.awt.*;
 
 public class GuiWindow extends JFrame implements IGuiWindow {
-    private final int defaultWidth = 1300;
+    private final int defaultWidth = 1350;
     private final int defaultHeight = 800;
     private final String defaultTitle = "JPaint--Kaicheng Yan";
     private final Insets defaultButtonDimensions 
@@ -29,6 +29,7 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
         setSize(defaultWidth, defaultHeight);
+        setResizable(false);
         JPanel window = createWindow();
         this.canvas = canvas;
         window.add(canvas, BorderLayout.CENTER);
