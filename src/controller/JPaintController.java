@@ -13,7 +13,7 @@ public class JPaintController implements IPaintController {
         _settings.getDrawShapeSettings().setCurrentShape(ShapeType.ELLIPSE);
         _settings.getPrimaryColorSettings().setCurrentPrimaryColor(PaintColor.BLACK);
         _settings.getSecondaryColorSettings().setCurrentSecondaryColor(PaintColor.BLUE);
-        _settings.getShadingTypeSettings().setCurrentShadingType(ShadingType.FILLED_IN);
+        _settings.getShadingTypeSettings().setCurrentShadingType(ShadingType.OUTLINE);
         _settings.getMouseModeSettings().setCurrentMouseMode(MouseMode.DRAW);
     }
 
@@ -24,29 +24,8 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, new SelectSecondaryColorCommand(_settings.getSecondaryColorSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, new SelectShadingTypeCommand(_settings.getShadingTypeSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, new SelectMouseModeCommand(_settings.getMouseModeSettings(), _uiModule));
-        
-        // pass the JPainterController to ui
-//        _uiModule.getJPainterController(this);
+        _uiModule.addEvent(EventName.REDO, new RedoCommand());
+        _uiModule.addEvent(EventName.UNDO, new UndoCommand());
         
     }
-    
-    @Override
-    public ShapeType getSelectedShape() {
-		return _settings.getDrawShapeSettings().getCurrentShape();
-    }
-
-	@Override
-	public PaintColor getPrimaryColor() {
-		return _settings.getPrimaryColorSettings().getCurrentPrimaryColor();
-	}
-
-	@Override
-	public PaintColor getSecondaryColor() {
-		return _settings.getSecondaryColorSettings().getCurrentSecondaryColor();
-	}
-
-	@Override
-	public ShadingType getShadingType() {
-		return _settings.getShadingTypeSettings().getCurrentShadingType();
-	}
 }

@@ -16,4 +16,9 @@ public class FilledShape implements IDisplayableShape {
 		_viewShape.displayFilled(_viewShape.getPrimaryColor());
 	}
 
+	@Override
+	public IViewShape getViewShape() {
+		return _viewShape;
+	}
+
 }

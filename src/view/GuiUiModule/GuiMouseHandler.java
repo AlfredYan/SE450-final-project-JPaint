@@ -14,37 +14,48 @@ import viewInterfaces.IStartAndEndPointCommand;
 public class GuiMouseHandler extends MouseAdapter implements IMouseModeObserver{
 	private Point _startingPoint;
 	private Point _endingPoint;
-	private IStartAndEndPointCommand _currentState;
-	private final SelectCommand _selectState = new SelectCommand();
-	private final MoveCommand _moveState = new MoveCommand();
-	private final CreateShapeCommand _drawState;
+	private Point _adjustedStartingPoint;
+	private Point _adjustedEndingPoint;
+	private IStartAndEndPointCommand _currentMode;
+	private final SelectCommand _selectMode;
+	private final MoveCommand _moveMode;
+	private final CreateShapeCommand _drawMode;
 	
-	public GuiMouseHandler(IStartAndEndPointCommand command) {
-		_drawState = (CreateShapeCommand) command;
-		_currentState = _drawState;
+	public GuiMouseHandler(IStartAndEndPointCommand drawCommand, 
+							IStartAndEndPointCommand selectCommand, 
+							IStartAndEndPointCommand moveCommand) {
+		_drawMode = (CreateShapeCommand) drawCommand;
+		_selectMode = (SelectCommand) selectCommand;
+		_moveMode = (MoveCommand) moveCommand;
+		_currentMode = _drawMode;
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(String.format("mouse pressed at (%d, %d)", e.getX(), e.getY()));
+//		System.out.println(String.format("mouse pressed at (%d, %d)", e.getX(), e.getY()));
 		_startingPoint = new Point(e.getX(), e.getY());
-//		canvas.setStartPoint(e.getX(), e.getY());
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e){
 		// TODO Auto-generated method stub
-		System.out.println(String.format("mouse released at (%d, %d)", e.getX(), e.getY()));
+//		System.out.println(String.format("mouse released at (%d, %d)", e.getX(), e.getY()));
 		_endingPoint = new Point(e.getX(), e.getY());
 		try {
-			_currentState.run(_startingPoint, _endingPoint);
+			_adjustedStartingPoint = getAdjustedStartingPoint(_startingPoint, _endingPoint);
+			_adjustedEndingPoint = getAdjustedEndingPoint(_startingPoint, _endingPoint);
+//			System.out.println(String.format(" _adjustedStartingPoint at (%d, %d)", _adjustedStartingPoint.getX(), _adjustedStartingPoint.getY()));
+//			System.out.println(String.format("_adjustedEndingPoint at (%d, %d)", _adjustedEndingPoint.getX(), _adjustedEndingPoint.getY()));
+			if(_currentMode == _moveMode) {
+				_currentMode.run(_startingPoint, _endingPoint);
+			} else {
+				_currentMode.run(_adjustedStartingPoint, _adjustedEndingPoint);
+			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-//		canvas.setEndPoint(e.getX(), e.getY());
-//		canvas.createShape();
 	}
 
 	@Override
@@ -52,13 +63,13 @@ public class GuiMouseHandler extends MouseAdapter implements IMouseModeObserver{
 		// TODO Auto-generated method stub
 		switch (currentmouseMode) {
 		case DRAW:
-			_currentState = _drawState;
+			_currentMode = _drawMode;
 			break;
 		case SELECT:
-			_currentState = _selectState;
+			_currentMode = _selectMode;
 			break;
 		case MOVE:
-			_currentState = _moveState;
+			_currentMode = _moveMode;
 			break;
 		default:
 			try {
@@ -68,6 +79,20 @@ public class GuiMouseHandler extends MouseAdapter implements IMouseModeObserver{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private Point getAdjustedStartingPoint(Point startingPoint, Point endingPoint) {
+		int startingX = Math.min(startingPoint.getX(), endingPoint.getX());
+		int startingY = Math.min(startingPoint.getY(), endingPoint.getY());
+		
+		return new Point(startingX, startingY);
+	}
+	
+	private Point getAdjustedEndingPoint(Point startingPoint, Point endingPoint) {
+		int endingX = Math.max(startingPoint.getX(), endingPoint.getX());
+		int endingY = Math.max(startingPoint.getY(), endingPoint.getY());
+		
+		return new Point(endingX, endingY);
 	}
 
 }

@@ -15,7 +15,8 @@ public class SelectSecondaryColorCommand implements ICommand {
 	@Override
 	public void run() {
 		PaintColor secondaryColor = _uiModule.getDialogResponse(_secondaryColorSettings);
-		_secondaryColorSettings.setCurrentSecondaryColor(secondaryColor);
+		if(secondaryColor != null)
+			_secondaryColorSettings.setCurrentSecondaryColor(secondaryColor);
 	}
 
 }

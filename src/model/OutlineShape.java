@@ -16,4 +16,9 @@ public class OutlineShape implements IDisplayableShape{
 		_viewShape.displayOutline(_viewShape.getPrimaryColor());
 	}
 
+	@Override
+	public IViewShape getViewShape() {
+		return _viewShape;
+	}
+
 }

@@ -29,11 +29,12 @@ public class ShapeFactory implements IShapeFactory{
 
 	@Override
 	public void create(Point startingPoint, Point endingPoint) throws Exception {
-		Point adjuestedStartingPoint = getAdjustedStartingPoint(startingPoint, endingPoint);
+		Point adjustedStartingPoint = getAdjustedStartingPoint(startingPoint, endingPoint);
 		Point adjustedEndingPoint = getAdjustedEndingPoint(startingPoint, endingPoint);
-		IViewShape viewShape = getIViewShape(adjuestedStartingPoint, adjustedEndingPoint);
+		IViewShape viewShape = getIViewShape(adjustedStartingPoint, adjustedEndingPoint);
 		IDisplayableShape displayableShape = getIDiplayableShape(viewShape);
 		_shapeList.addToList(displayableShape);
+		_shapeList.notifyObesrver();
 	}
 	
 	private Point getAdjustedStartingPoint(Point startingPoint, Point endingPoint) {

@@ -2,8 +2,12 @@ package view;
 
 import controller.ApplicationSettings;
 import controller.CreateShapeCommand;
+import controller.MouseMode;
+import controller.MoveCommand;
+import controller.SelectCommand;
 import model.ShapeFactory;
 import model.DisplayableShapeFctory;
+import model.SelectedShapeList;
 import model.ShapeList;
 import view.CmdUiModule.Cmd;
 import view.GuiUiModule.Gui;
@@ -23,12 +27,16 @@ public class UIFactory {
                 break;
             case GUI:
             		PaintCanvas canvas = new PaintCanvas();
+            		SelectedShapeList selectedShapeList = new SelectedShapeList();
                 ui = new Gui(new GuiWindow(canvas));
-                GuiMouseHandler mouseHandler = new GuiMouseHandler(new CreateShapeCommand(new ShapeFactory(settings, shapeList, 
-                												new GuiViewShapeFactory(canvas), new DisplayableShapeFctory())));
+                CreateShapeCommand drawCommand = new CreateShapeCommand(new ShapeFactory(settings, shapeList, new GuiViewShapeFactory(canvas), new DisplayableShapeFctory()));
+                SelectCommand selectCommand = new SelectCommand(shapeList, selectedShapeList);
+                MoveCommand moveCommand = new MoveCommand(shapeList, selectedShapeList);
+                GuiMouseHandler mouseHandler = new GuiMouseHandler(drawCommand, selectCommand, moveCommand);
                 settings.getMouseModeSettings().registerObserver(mouseHandler);
                 canvas.addMouseListener(mouseHandler);
                 shapeList.registerObserver(canvas);
+                selectedShapeList.registerObserver(canvas);
                 break;
             default:
                 throw new InvalidUIException();

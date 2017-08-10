@@ -1,7 +1,6 @@
 package view.GuiUiModule;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 import controller.PaintColor;
@@ -18,7 +17,6 @@ public class GuiTriangle implements IViewShape{
 	public GuiTriangle(Shape shape, PaintCanvas canvas) {
 		_shape = shape;
 		_canvas = canvas;
-		setPoints();
 	}
 
 	private void setPoints() {
@@ -34,6 +32,7 @@ public class GuiTriangle implements IViewShape{
 		Graphics2D graphics = _canvas.getGraphics2D();
 		graphics.setStroke(new BasicStroke(5));
 		graphics.setColor(color.getColor());
+		setPoints();
 		graphics.drawPolygon(_xPoints, _yPoints, _nPoints);
 	}
 
@@ -41,6 +40,7 @@ public class GuiTriangle implements IViewShape{
 	public void displayFilled(PaintColor color) {
 		Graphics2D graphics = _canvas.getGraphics2D();
 		graphics.setColor(color.getColor());
+		setPoints();
 		graphics.fillPolygon(_xPoints, _yPoints, _nPoints);
 	}
 
@@ -52,6 +52,11 @@ public class GuiTriangle implements IViewShape{
 	@Override
 	public PaintColor getSecondaryColor() {
 		return _shape.getSecondaryColor();
+	}
+
+	@Override
+	public Shape getShape() {
+		return _shape;
 	}
 
 }

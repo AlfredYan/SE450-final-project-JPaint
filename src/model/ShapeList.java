@@ -8,7 +8,7 @@ import view.GuiUiModule.PaintCanvas;
 
 public class ShapeList implements IShapeList {
 
-	private ArrayList<IDisplayableShape> _shapelist;
+	private final ArrayList<IDisplayableShape> _shapelist;
 	private PaintCanvas _canvas;
 	
 	public ShapeList() {
@@ -18,7 +18,7 @@ public class ShapeList implements IShapeList {
 	@Override
 	public void addToList(IDisplayableShape displayableShape) {
 		_shapelist.add(displayableShape);
-		notifyObesrver();
+//		notifyObesrver();
 	}
 
 	@Override
@@ -26,8 +26,15 @@ public class ShapeList implements IShapeList {
 		_canvas = canvas;
 	}
 
-	private void notifyObesrver() {
+	@Override
+	public void notifyObesrver() {
+		_canvas.getGraphics2D().clearRect(0, 0, _canvas.getWidth(), _canvas.getHeight());
 		_canvas.update(_shapelist);
+	}
+
+	@Override
+	public ArrayList<IDisplayableShape> getArrayList() {
+		return _shapelist;
 	}
 	
 }

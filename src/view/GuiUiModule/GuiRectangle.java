@@ -42,4 +42,9 @@ public class GuiRectangle implements IViewShape {
 		return _shape.getSecondaryColor();
 	}
 
+	@Override
+	public Shape getShape() {
+		return _shape;
+	}
+
 }

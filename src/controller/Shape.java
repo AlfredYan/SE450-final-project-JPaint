@@ -18,16 +18,32 @@ public class Shape {
 		return _startPoint.getX();
 	}
 	
+	public void setStartX(int startX) {
+		_startPoint.setX(startX);
+	}
+	
 	public int getStartY() {
 		return _startPoint.getY();
+	}
+	
+	public void setStartY(int startY) {
+		_startPoint.setY(startY);
 	}
 	
 	public int getEndX() {
 		return _endPoint.getX();
 	}
 	
+	public void setEndX(int endX) {
+		_endPoint.setX(endX);
+	}
+	
 	public int getEndY() {
 		return _endPoint.getY();
+	}
+	
+	public void setEndY(int endY) {
+		_endPoint.setY(endY);
 	}
 	
 	public int getWidth() {

@@ -41,4 +41,9 @@ public class GuiEllipse implements IViewShape{
 	public PaintColor getSecondaryColor() {
 		return _shape.getSecondaryColor();
 	}
+
+	@Override
+	public Shape getShape() {
+		return _shape;
+	}
 }

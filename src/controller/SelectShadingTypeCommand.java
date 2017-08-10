@@ -15,7 +15,8 @@ public class SelectShadingTypeCommand implements ICommand {
 	@Override
 	public void run() {
 		ShadingType shadingType = _uiModule.getDialogResponse(_shadingTypeSettings);
-		_shadingTypeSettings.setCurrentShadingType(shadingType);
+		if(shadingType != null)
+			_shadingTypeSettings.setCurrentShadingType(shadingType);
 	}
 
 }
