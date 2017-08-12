@@ -36,5 +36,12 @@ public class ShapeList implements IShapeList {
 	public ArrayList<IDisplayableShape> getArrayList() {
 		return _shapelist;
 	}
+
+	@Override
+	public IDisplayableShape pop() {
+		IDisplayableShape displayableShape = _shapelist.get(_shapelist.size()-1);
+		_shapelist.remove(_shapelist.size()-1);
+		return displayableShape;
+	}
 	
 }

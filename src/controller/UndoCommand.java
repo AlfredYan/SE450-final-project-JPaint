@@ -9,9 +9,9 @@ public class UndoCommand implements ICommand{
 		// TODO Auto-generated method stub
 		/**
 		 * draw
-		 * delete
 		 * move
 		 * paste
+		 * delete
 		 */
 		CommandHistory.undo();
 	}

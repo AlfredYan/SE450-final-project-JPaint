@@ -6,33 +6,30 @@ import modelInterfaces.IDisplayableShape;
 import modelInterfaces.IShapeList;
 import view.GuiUiModule.PaintCanvas;
 
-public class SelectedShapeList implements IShapeList {
+public class CopiedList implements IShapeList {
 
-	private final ArrayList<IDisplayableShape> _SelectedShapeList;
-	private PaintCanvas _canvas;
-	
-	public SelectedShapeList() {
-		_SelectedShapeList = new ArrayList<IDisplayableShape>();				
-	}
-	
 	@Override
 	public void addToList(IDisplayableShape displayableShape) {
-		_SelectedShapeList.add(displayableShape);
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void registerObserver(PaintCanvas canvas) {
-		_canvas = canvas;
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public ArrayList<IDisplayableShape> getArrayList() {
-		return _SelectedShapeList;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void notifyObesrver() {
-		_canvas.repaint();
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override

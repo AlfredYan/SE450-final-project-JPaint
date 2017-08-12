@@ -9,4 +9,5 @@ public interface IShapeList {
 	void registerObserver(PaintCanvas canvas);
 	ArrayList<IDisplayableShape> getArrayList();
 	void notifyObesrver();
+	IDisplayableShape pop();
 }
