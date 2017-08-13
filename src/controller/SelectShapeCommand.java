@@ -17,9 +17,7 @@ public class SelectShapeCommand implements ICommand {
     @Override
     public void run() {
         ShapeType shapeChoice = _uiModule.getDialogResponse(_shapeSettings);
-
-        if(shapeChoice != null)
-        		_shapeSettings.setCurrentShape(shapeChoice);
+        _shapeSettings.setCurrentShape(shapeChoice);
     }
 
 }

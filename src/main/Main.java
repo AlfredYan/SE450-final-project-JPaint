@@ -4,11 +4,8 @@ package main;
 import controller.ApplicationSettings;
 import controller.IPaintController;
 import controller.JPaintController;
-import model.CopiedList;
-import model.SelectedShapeList;
 import model.ShapeList;
 import modelInterfaces.IShapeList;
-import view.GuiUiModule.Gui;
 import view.UIFactory;
 import view.UIType;
 import viewInterfaces.UIModule;
@@ -26,10 +23,8 @@ public class Main {
         	
         		ApplicationSettings settings = new ApplicationSettings();
         		IShapeList shapeList = new ShapeList();
-        		IShapeList selectedShapeList = new SelectedShapeList();
-        		IShapeList copiedShapeList = new CopiedList();
-            UIModule ui = UIFactory.createUI(UIType.GUI, settings, shapeList, selectedShapeList);
-            IPaintController controller = new JPaintController(ui, settings, shapeList, selectedShapeList, copiedShapeList);
+            UIModule ui = UIFactory.createUI(UIType.GUI, settings, shapeList);
+            IPaintController controller = new JPaintController(ui, settings, shapeList);
             JPaint jpaintProgram = new JPaint(controller);
             jpaintProgram.run();
         } catch (Throwable ex) {

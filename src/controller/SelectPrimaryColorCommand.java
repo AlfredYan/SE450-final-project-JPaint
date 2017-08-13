@@ -17,8 +17,7 @@ public class SelectPrimaryColorCommand implements ICommand {
 	@Override
 	public void run() {
 		PaintColor primaryColorChoice = _uiModule.getDialogResponse(_primaryColorSettings);
-		if(primaryColorChoice != null)
-			_primaryColorSettings.setCurrentPrimaryColor(primaryColorChoice);
+		_primaryColorSettings.setCurrentPrimaryColor(primaryColorChoice);
 	}
 
 }

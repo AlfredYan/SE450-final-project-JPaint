@@ -1,44 +1,46 @@
 package controller;
 
 import modelInterfaces.IDisplayableShape;
+import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 import viewInterfaces.IStartAndEndPointCommand;
 
 public class SelectCommand implements IStartAndEndPointCommand {
 	
 	private final IShapeList _shapeList;
-	private final IShapeList _selectedShapeList;
+	private final ISelectedShapeList _selectedShapeList;
 
-	public SelectCommand(IShapeList shapeList, IShapeList selectedShapeList) {
+	public SelectCommand(IShapeList shapeList) {
 		_shapeList = shapeList;
-		_selectedShapeList = selectedShapeList;
+		_selectedShapeList = shapeList;
 	}
 	
 	@Override
 	public void run(Point startingPoint, Point endingPoint) throws Exception {
 		// TODO Auto-generated method stub
-		if(_selectedShapeList.getArrayList().size() != 0) {
-			_selectedShapeList.getArrayList().clear();
-			System.out.println("selectedShapeList is empty !");
+		if(_selectedShapeList.getSelectedArrayList().size() != 0) {
+			_selectedShapeList.getSelectedArrayList().clear();
 		}
-		for(IDisplayableShape shape : _shapeList.getArrayList()) {
+		Shape shape;
+		for(IDisplayableShape displayableShapeshape : _shapeList.getArrayList()) {
+			shape = displayableShapeshape.getViewShape().getShape();
 			if(startingPoint.getX() == endingPoint.getX() && startingPoint.getY() == endingPoint.getY()) {
 				// click to select
-				if(shape.getViewShape().getShape().getStartX() <= startingPoint.getX()
-						&& shape.getViewShape().getShape().getStartY() <= startingPoint.getY()
-						&& shape.getViewShape().getShape().getEndX() >= endingPoint.getX()
-						&& shape.getViewShape().getShape().getEndY() >= endingPoint.getY()) {
+				if(shape.getStartX() <= startingPoint.getX()
+						&& shape.getStartY() <= startingPoint.getY()
+						&& shape.getEndX() >= endingPoint.getX()
+						&& shape.getEndY() >= endingPoint.getY()) {
 					System.out.println("click to select !");
-					_selectedShapeList.addToList(shape);
+					_selectedShapeList.addToSelectedShapeList(displayableShapeshape);
 				}
 			}else {
 				// drag to select
-				if(shape.getViewShape().getShape().getStartX() >= startingPoint.getX()
-						&& shape.getViewShape().getShape().getStartY() >= startingPoint.getY()
-						&& shape.getViewShape().getShape().getEndX() <= endingPoint.getX()
-						&& shape.getViewShape().getShape().getEndY() <= endingPoint.getY()) {
+				if(shape.getStartX() >= startingPoint.getX()
+						&& shape.getStartY() >= startingPoint.getY()
+						&& shape.getEndX() <= endingPoint.getX()
+						&& shape.getEndY() <= endingPoint.getY()) {
 					System.out.println("drag to select !");
-					_selectedShapeList.addToList(shape);
+					_selectedShapeList.addToSelectedShapeList(displayableShapeshape);
 				}
 			}
 		}

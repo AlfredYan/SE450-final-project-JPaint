@@ -7,12 +7,13 @@ import viewInterfaces.UIModule;
 public class JPaintController implements IPaintController {
     private final UIModule _uiModule;
     private final ApplicationSettings _settings;
+    private final IShapeList _shapeList;
 
     public JPaintController(UIModule uiModule, ApplicationSettings settings, 
-    							IShapeList shapeList, IShapeList selectedShapeList,
-    							IShapeList CopySha){
+    							IShapeList shapeList){
         _uiModule = uiModule;
         _settings = settings;
+        _shapeList = shapeList;
         _settings.getDrawShapeSettings().setCurrentShape(ShapeType.ELLIPSE);
         _settings.getPrimaryColorSettings().setCurrentPrimaryColor(PaintColor.BLACK);
         _settings.getSecondaryColorSettings().setCurrentSecondaryColor(PaintColor.BLUE);
@@ -27,9 +28,9 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, new SelectSecondaryColorCommand(_settings.getSecondaryColorSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, new SelectShadingTypeCommand(_settings.getShadingTypeSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, new SelectMouseModeCommand(_settings.getMouseModeSettings(), _uiModule));
-        _uiModule.addEvent(EventName.COPY, new CopyCommand());
-        _uiModule.addEvent(EventName.PASTE, new CreatePasteDeleteCommand(EventName.PASTE));
-        _uiModule.addEvent(EventName.DELETE, new CreatePasteDeleteCommand(EventName.DELETE));
+        _uiModule.addEvent(EventName.COPY, new CopyCommand(_shapeList));
+        _uiModule.addEvent(EventName.PASTE, new CreatePasteDeleteCommand(EventName.PASTE, _shapeList));
+        _uiModule.addEvent(EventName.DELETE, new CreatePasteDeleteCommand(EventName.DELETE, _shapeList));
         _uiModule.addEvent(EventName.REDO, new RedoCommand());
         _uiModule.addEvent(EventName.UNDO, new UndoCommand());
         

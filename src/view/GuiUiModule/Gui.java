@@ -31,7 +31,10 @@ public class Gui implements UIModule {
                 null,
                 dialogSettings.getDialogOptions(),
                 dialogSettings.getDefaultChoice());
-        return (T)selectedValue;
+        if((T)selectedValue != null)
+        		return (T)selectedValue;
+        else
+        		return (T) dialogSettings.getDefaultChoice();
     }
 
 

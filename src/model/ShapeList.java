@@ -9,10 +9,14 @@ import view.GuiUiModule.PaintCanvas;
 public class ShapeList implements IShapeList {
 
 	private final ArrayList<IDisplayableShape> _shapelist;
+	private final ArrayList<IDisplayableShape> _selectedShapelist;
+	private final ArrayList<IDisplayableShape> _copiedShapelist;
 	private PaintCanvas _canvas;
 	
 	public ShapeList() {
 		_shapelist = new ArrayList<IDisplayableShape>();
+		_selectedShapelist = new ArrayList<IDisplayableShape>();
+		_copiedShapelist = new ArrayList<IDisplayableShape>();
 	}
 
 	@Override
@@ -31,6 +35,11 @@ public class ShapeList implements IShapeList {
 		_canvas.getGraphics2D().clearRect(0, 0, _canvas.getWidth(), _canvas.getHeight());
 		_canvas.update(_shapelist);
 	}
+	
+	@Override
+	public void removeShape(IDisplayableShape displayableShape) {
+		_shapelist.remove(displayableShape);
+	}
 
 	@Override
 	public ArrayList<IDisplayableShape> getArrayList() {
@@ -38,10 +47,23 @@ public class ShapeList implements IShapeList {
 	}
 
 	@Override
-	public IDisplayableShape pop() {
-		IDisplayableShape displayableShape = _shapelist.get(_shapelist.size()-1);
-		_shapelist.remove(_shapelist.size()-1);
-		return displayableShape;
+	public void addToSelectedShapeList(IDisplayableShape displayableShape) {
+		_selectedShapelist.add(displayableShape);
+	}
+
+	@Override
+	public ArrayList<IDisplayableShape> getSelectedArrayList() {
+		return _selectedShapelist;
+	}
+
+	@Override
+	public void addToCopiedShapeList(IDisplayableShape displayableShape) {
+		_copiedShapelist.add(displayableShape);
+	}
+
+	@Override
+	public ArrayList<IDisplayableShape> getCopiedArrayList() {
+		return _copiedShapelist;
 	}
 	
 }

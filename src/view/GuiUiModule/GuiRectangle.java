@@ -47,4 +47,9 @@ public class GuiRectangle implements IViewShape {
 		return _shape;
 	}
 
+	@Override
+	public PaintCanvas getCanvas() {
+		return _canvas;
+	}
+
 }

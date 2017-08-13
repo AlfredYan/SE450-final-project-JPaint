@@ -46,4 +46,9 @@ public class GuiEllipse implements IViewShape{
 	public Shape getShape() {
 		return _shape;
 	}
+
+	@Override
+	public PaintCanvas getCanvas() {
+		return _canvas;
+	}
 }

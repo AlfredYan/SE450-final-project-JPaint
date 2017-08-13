@@ -2,6 +2,7 @@ package controller;
 
 import model.DisplayableShapeFctory;
 import model.ShapeFactory;
+import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 import view.GuiViewShapeFactory;
 import view.GuiUiModule.PaintCanvas;
@@ -12,7 +13,7 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 	private ApplicationSettings _settings;
 	private IShapeList _shapeList;
 	private PaintCanvas _canvas;
-	private IShapeList _selectedShapeList;
+	private ISelectedShapeList _selectedShapeList;
 	private static SingletonStartAndEndPointCommandFactory _instance;
 	
 	private SingletonStartAndEndPointCommandFactory() {
@@ -25,8 +26,9 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 		return _instance;
 	}
 	
+	@Override
 	public void setParameters(ApplicationSettings settings, IShapeList shapeList, 
-							PaintCanvas canvas, IShapeList selectedShapeList) {
+							PaintCanvas canvas) {
 		if(_settings == null)
 			_settings = settings;
 		if(_shapeList == null)
@@ -34,7 +36,7 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 		if(_canvas == null)
 			_canvas = canvas;
 		if(_selectedShapeList == null)
-			_selectedShapeList = selectedShapeList;
+			_selectedShapeList = shapeList;
 	}
 
 	@Override
@@ -46,10 +48,10 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 			startAndEndPointCommand = new CreateShapeCommand(new ShapeFactory(_settings, _shapeList, new GuiViewShapeFactory(_canvas), new DisplayableShapeFctory()), _shapeList);
 			break;
 		case SELECT:
-			startAndEndPointCommand = new SelectCommand(_shapeList, _selectedShapeList);
+			startAndEndPointCommand = new SelectCommand(_shapeList);
 			break;
 		case MOVE:
-			startAndEndPointCommand = new MoveCommand(_shapeList, _selectedShapeList);
+			startAndEndPointCommand = new MoveCommand(_shapeList);
 			break;
 		default:
 			throw new Exception("Incorrect Mouse Mode");

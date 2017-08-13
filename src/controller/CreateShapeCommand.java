@@ -19,14 +19,14 @@ public class CreateShapeCommand implements IStartAndEndPointCommand, IUndoable {
 
 	@Override
 	public void run(Point startingPoint, Point endingPoint) throws Exception {
-		_shapeFactory.create(startingPoint, endingPoint);
+		_displayableShape = _shapeFactory.create(startingPoint, endingPoint);
 		CommandHistory.add(this);
 	}
 
 	@Override
 	public void undo() {
 		// TODO Auto-generated method stub
-		_displayableShape = _shapeList.pop();
+		_shapeList.removeShape(_displayableShape);
 		_shapeList.notifyObesrver();
 	}
 

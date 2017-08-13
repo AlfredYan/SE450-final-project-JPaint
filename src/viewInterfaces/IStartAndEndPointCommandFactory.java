@@ -8,5 +8,5 @@ import view.GuiUiModule.PaintCanvas;
 public interface IStartAndEndPointCommandFactory {
 
 	IStartAndEndPointCommand createStartAndEndPointCommand(MouseMode mouseMode) throws Exception;
-	void setParameters(ApplicationSettings settings, IShapeList shapeList, PaintCanvas canvas, IShapeList selectedShapeList);
+	void setParameters(ApplicationSettings settings, IShapeList shapeList, PaintCanvas canvas);
 }
