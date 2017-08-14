@@ -63,8 +63,7 @@ public class Shape {
 	}
 	
 	@Override
-	public Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return super.clone();
+	public Shape clone() throws CloneNotSupportedException {
+		return new Shape(_primaryColor, _secondaryColor, new Point(getStartX(), getStartY()), new Point(getEndX(), getEndY()));
 	}
 }

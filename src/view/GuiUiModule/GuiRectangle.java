@@ -1,7 +1,6 @@
 package view.GuiUiModule;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 import controller.PaintColor;
@@ -46,10 +45,10 @@ public class GuiRectangle implements IViewShape {
 	public Shape getShape() {
 		return _shape;
 	}
-
+	
 	@Override
-	public PaintCanvas getCanvas() {
-		return _canvas;
+	public IViewShape clone() throws CloneNotSupportedException {
+		return new GuiRectangle(_shape.clone(), _canvas);
 	}
 
 }

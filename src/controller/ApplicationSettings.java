@@ -1,7 +1,5 @@
 package controller;
 
-import viewInterfaces.IDialogChoice;
-
 public class ApplicationSettings {
     private ShapeTypeSettings drawShapeSettings = new ShapeTypeSettings();
     private PrimaryColorSettings primaryColorSettings = new PrimaryColorSettings();

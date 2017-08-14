@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.Canvas;
-
 import controller.Shape;
 import controller.ShapeType;
 import view.GuiUiModule.GuiEllipse;

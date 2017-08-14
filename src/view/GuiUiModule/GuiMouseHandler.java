@@ -4,11 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import ControllerInterfaces.IMouseModeObserver;
-import controller.CreateShapeCommand;
 import controller.MouseMode;
-import controller.MoveCommand;
 import controller.Point;
-import controller.SelectCommand;
 import controller.SingletonStartAndEndPointCommandFactory;
 import viewInterfaces.IStartAndEndPointCommand;
 
@@ -22,8 +19,6 @@ public class GuiMouseHandler extends MouseAdapter implements IMouseModeObserver{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-//		System.out.println(String.format("mouse pressed at (%d, %d)", e.getX(), e.getY()));
 		_startingPoint = new Point(e.getX(), e.getY());
 	}
 

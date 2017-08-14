@@ -58,10 +58,10 @@ public class GuiTriangle implements IViewShape{
 	public Shape getShape() {
 		return _shape;
 	}
-
+	
 	@Override
-	public PaintCanvas getCanvas() {
-		return _canvas;
+	public IViewShape clone() throws CloneNotSupportedException {
+		return new GuiTriangle(_shape.clone(), _canvas);
 	}
 
 }

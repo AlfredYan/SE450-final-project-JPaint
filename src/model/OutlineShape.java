@@ -20,5 +20,11 @@ public class OutlineShape implements IDisplayableShape{
 	public IViewShape getViewShape() {
 		return _viewShape;
 	}
+	
+	@Override
+	public IDisplayableShape clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return new OutlineShape(_viewShape.clone());
+	}
 
 }

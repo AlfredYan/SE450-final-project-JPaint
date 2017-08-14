@@ -3,8 +3,6 @@ package view.GuiUiModule;
 import javax.swing.*;
 import viewInterfaces.EventName;
 import ControllerInterfaces.ICommand;
-import controller.IPaintController;
-import controller.JPaintController;
 import viewInterfaces.IDialogChoice;
 import viewInterfaces.UIModule;
 import view.IGuiWindow;
@@ -36,12 +34,4 @@ public class Gui implements UIModule {
         else
         		return (T) dialogSettings.getDefaultChoice();
     }
-
-
-
-//	@Override
-//	public void getJPainterController(IPaintController paintController) {
-//		// TODO Auto-generated method stub
-//		gui.getJPainterController(paintController);
-//	}
 }

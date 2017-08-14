@@ -20,5 +20,11 @@ public class FilledShape implements IDisplayableShape {
 	public IViewShape getViewShape() {
 		return _viewShape;
 	}
+	
+	@Override
+	public IDisplayableShape clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return new FilledShape(_viewShape.clone());
+	}
 
 }

@@ -1,7 +1,5 @@
 package controller;
 
-import java.awt.Paint;
-
 import ControllerInterfaces.ICommand;
 import viewInterfaces.UIModule;
 

@@ -33,6 +33,5 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.DELETE, new CreatePasteDeleteCommand(EventName.DELETE, _shapeList));
         _uiModule.addEvent(EventName.REDO, new RedoCommand());
         _uiModule.addEvent(EventName.UNDO, new UndoCommand());
-        
     }
 }

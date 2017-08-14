@@ -1,6 +1,5 @@
 package main;
 
-
 import controller.ApplicationSettings;
 import controller.IPaintController;
 import controller.JPaintController;

@@ -7,8 +7,6 @@ import java.util.NoSuchElementException;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import controller.IPaintController;
-import controller.JPaintController;
 import view.IGuiWindow;
 import viewInterfaces.EventName;
 
@@ -22,7 +20,6 @@ public class GuiWindow extends JFrame implements IGuiWindow {
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
     private final PaintCanvas canvas;
-//    private IPaintController paintController;
  
     public GuiWindow(PaintCanvas canvas){
         setVisible(true);
@@ -33,11 +30,6 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         JPanel window = createWindow();
         this.canvas = canvas;
         window.add(canvas, BorderLayout.CENTER);
-        
-//        // add mouse event handlers to canvas
-//        GuiMouseHandler mouseHandler = new GuiMouseHandler(canvas, paintController);
-//        canvas.addMouseListener(mouseHandler);
-//        canvas.addMouseMotionListener(mouseHandler);
 		validate();
     }
 
@@ -103,13 +95,4 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         return contentPane;
     }
 
-//	@Override
-//	public void getJPainterController(IPaintController jPaintController) {
-//		paintController = jPaintController;
-////      // add mouse event handlers to canvas
-//      GuiMouseHandler mouseHandler = new GuiMouseHandler(canvas, paintController);
-////      canvas.setPainterController(paintController);
-//      canvas.addMouseListener(mouseHandler);
-//      canvas.addMouseMotionListener(mouseHandler);
-//	}
 }

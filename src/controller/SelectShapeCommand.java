@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-
 import ControllerInterfaces.ICommand;
-import ControllerInterfaces.IUndoable;
 import viewInterfaces.UIModule;
 
 public class SelectShapeCommand implements ICommand {
