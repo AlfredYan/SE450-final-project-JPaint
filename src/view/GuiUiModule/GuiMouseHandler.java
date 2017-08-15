@@ -26,12 +26,12 @@ public class GuiMouseHandler extends MouseAdapter implements IMouseModeObserver{
 	public void mouseReleased(MouseEvent e){
 		_endingPoint = new Point(e.getX(), e.getY());
 		try {
-			_adjustedStartingPoint = getAdjustedStartingPoint(_startingPoint, _endingPoint);
-			_adjustedEndingPoint = getAdjustedEndingPoint(_startingPoint, _endingPoint);
 			_currentCommand = SingletonStartAndEndPointCommandFactory.getInstance().createStartAndEndPointCommand(_currentMode);
 			if(_currentMode.toString().toUpperCase() == "MOVE") {
 				_currentCommand.run(_startingPoint, _endingPoint);
 			} else {
+				_adjustedStartingPoint = getAdjustedStartingPoint(_startingPoint, _endingPoint);
+				_adjustedEndingPoint = getAdjustedEndingPoint(_startingPoint, _endingPoint);
 				_currentCommand.run(_adjustedStartingPoint, _adjustedEndingPoint);
 			}
 		} catch (Exception e1) {

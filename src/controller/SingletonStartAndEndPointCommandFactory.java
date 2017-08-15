@@ -1,6 +1,6 @@
 package controller;
 
-import model.DisplayableShapeFctory;
+import model.DisplayableShapeFactory;
 import model.ShapeFactory;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
@@ -45,7 +45,7 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 		
 		switch (mouseMode) {
 		case DRAW:
-			startAndEndPointCommand = new CreateShapeCommand(new ShapeFactory(_settings, _shapeList, new GuiViewShapeFactory(_canvas), new DisplayableShapeFctory()), _shapeList);
+			startAndEndPointCommand = new CreateShapeCommand(new ShapeFactory(_settings, _shapeList, new GuiViewShapeFactory(_canvas), new DisplayableShapeFactory()), _shapeList);
 			break;
 		case SELECT:
 			startAndEndPointCommand = new SelectCommand(_shapeList);

@@ -23,7 +23,6 @@ public class OutlineShape implements IDisplayableShape{
 	
 	@Override
 	public IDisplayableShape clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
 		return new OutlineShape(_viewShape.clone());
 	}
 

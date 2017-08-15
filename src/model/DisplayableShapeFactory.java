@@ -5,7 +5,7 @@ import modelInterfaces.IDisplayableShape;
 import modelInterfaces.IDisplayableShapeFactory;
 import viewInterfaces.IViewShape;
 
-public class DisplayableShapeFctory implements IDisplayableShapeFactory{
+public class DisplayableShapeFactory implements IDisplayableShapeFactory{
 
 	@Override
 	public IDisplayableShape createDisplayShape(ShadingType currentShadingType, IViewShape viewShape) throws Exception {

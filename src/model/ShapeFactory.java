@@ -30,28 +30,12 @@ public class ShapeFactory implements IShapeFactory{
 
 	@Override
 	public IDisplayableShape create(Point startingPoint, Point endingPoint) throws Exception {
-//		Point adjustedStartingPoint = getAdjustedStartingPoint(startingPoint, endingPoint);
-//		Point adjustedEndingPoint = getAdjustedEndingPoint(startingPoint, endingPoint);
 		IViewShape viewShape = getIViewShape(startingPoint, endingPoint);
 		IDisplayableShape displayableShape = getIDiplayableShape(viewShape);
 		_shapeList.addToList(displayableShape);
 		_shapeList.notifyObesrver();
 		return displayableShape;
 	}
-	
-//	private Point getAdjustedStartingPoint(Point startingPoint, Point endingPoint) {
-//		int startingX = Math.min(startingPoint.getX(), endingPoint.getX());
-//		int startingY = Math.min(startingPoint.getY(), endingPoint.getY());
-//		
-//		return new Point(startingX, startingY);
-//	}
-//	
-//	private Point getAdjustedEndingPoint(Point startingPoint, Point endingPoint) {
-//		int endingX = Math.max(startingPoint.getX(), endingPoint.getX());
-//		int endingY = Math.max(startingPoint.getY(), endingPoint.getY());
-//		
-//		return new Point(endingX, endingY);
-//	}
 	
 	private IViewShape getIViewShape(Point startingPoint, Point endingPoint) throws Exception {
 		ShapeType currentShape = _settings.getDrawShapeSettings().getCurrentShape();

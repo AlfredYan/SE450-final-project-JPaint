@@ -24,7 +24,6 @@ public class FilledAndOutlineShape implements IDisplayableShape {
 	
 	@Override
 	public IDisplayableShape clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
 		return new FilledAndOutlineShape(_viewShape.clone());
 	}
 
