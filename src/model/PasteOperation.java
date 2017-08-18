@@ -1,12 +1,14 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 
+import controller.Shape;
 import modelInterfaces.ICopiedShapeList;
 import modelInterfaces.IDisplayableShape;
+import modelInterfaces.IPasteOperation;
 import modelInterfaces.IShapeList;
 
-public class PasteOperation {
+public class PasteOperation implements IPasteOperation{
 
 	private final IShapeList _shapeList;
 	private final ICopiedShapeList _copiedShapeList;
@@ -17,15 +19,18 @@ public class PasteOperation {
 		_copiedShapeList = shapeList;
 	}
 	
+	@Override
 	public void pasteShapes() {
 		cloneToUndoableList(_copiedShapeList.getCopiedArrayList());
 		addShapes(_undoableCopiedShapelist);
 	}
 	
+	@Override
 	public void undoPaste() {
 		removeShapes(_undoableCopiedShapelist);
 	}
 	
+	@Override
 	public void redoPaste() {
 		addShapes(_undoableCopiedShapelist);
 	}

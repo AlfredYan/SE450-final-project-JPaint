@@ -1,6 +1,8 @@
 package controller;
 
 import model.DisplayableShapeFactory;
+import model.MoveOperation;
+import model.SelectOperation;
 import model.ShapeFactory;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
@@ -45,13 +47,13 @@ public class SingletonStartAndEndPointCommandFactory implements IStartAndEndPoin
 		
 		switch (mouseMode) {
 		case DRAW:
-			startAndEndPointCommand = new CreateShapeCommand(new ShapeFactory(_settings, _shapeList, new GuiViewShapeFactory(_canvas), new DisplayableShapeFactory()), _shapeList);
+			startAndEndPointCommand = new CreateShapeCommand(new ShapeFactory(_settings, _shapeList, new GuiViewShapeFactory(_canvas), new DisplayableShapeFactory()));
 			break;
 		case SELECT:
-			startAndEndPointCommand = new SelectCommand(_shapeList);
+			startAndEndPointCommand = new SelectCommand(new SelectOperation(_shapeList));
 			break;
 		case MOVE:
-			startAndEndPointCommand = new MoveCommand(_shapeList);
+			startAndEndPointCommand = new MoveCommand(new MoveOperation(_shapeList));
 			break;
 		default:
 			throw new Exception("Incorrect Mouse Mode");

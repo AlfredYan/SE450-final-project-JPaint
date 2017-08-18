@@ -1,12 +1,15 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 
+import controller.Point;
+import controller.Shape;
 import modelInterfaces.IDisplayableShape;
+import modelInterfaces.IMoveOperation;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 
-public class MoveOperation {
+public class MoveOperation implements IMoveOperation{
 	
 	private final IShapeList _shapeList;
 	private final ISelectedShapeList _selectedShapelist;
@@ -19,6 +22,7 @@ public class MoveOperation {
 		_selectedShapelist = shapeList;
 	}
 	
+	@Override
 	public void moveShapes(Point startingPoint, Point endingPoint) {
 		if(_selectedShapelist.getSelectedArrayList().size() == 0) {
 			return;
@@ -31,10 +35,12 @@ public class MoveOperation {
 		move(_selectedShapelist.getSelectedArrayList());
 	}
 	
+	@Override
 	public void undoMove() {
 		restore(_undoableSelectedShapelist);
 	}
 	
+	@Override
 	public void redoMove() {
 		move(_undoableSelectedShapelist);
 	}

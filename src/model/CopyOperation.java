@@ -1,11 +1,12 @@
-package controller;
+package model;
 
 import modelInterfaces.ICopiedShapeList;
+import modelInterfaces.ICopyOperation;
 import modelInterfaces.IDisplayableShape;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 
-public class CopyOperation {
+public class CopyOperation implements ICopyOperation{
 	
 	private final ISelectedShapeList _selectedShapeList;
 	private final ICopiedShapeList _copiedShapeList;
@@ -15,6 +16,7 @@ public class CopyOperation {
 		_copiedShapeList = shapeList;
 	}
 	
+	@Override
 	public void copyShapes() {
 		for(IDisplayableShape shape : _selectedShapeList.getSelectedArrayList()) {
 			try {

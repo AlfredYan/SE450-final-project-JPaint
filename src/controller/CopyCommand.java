@@ -1,14 +1,16 @@
 package controller;
 
 import ControllerInterfaces.ICommand;
+import model.CopyOperation;
+import modelInterfaces.ICopyOperation;
 import modelInterfaces.IShapeList;
 
 public class CopyCommand implements ICommand{
 
-	private final CopyOperation _copyOperation;
+	private final ICopyOperation _copyOperation;
 	
-	public CopyCommand(IShapeList shapeList) {
-		_copyOperation = new CopyOperation(shapeList);
+	public CopyCommand(ICopyOperation copyOperation) {
+		_copyOperation = copyOperation;
 	}
 	
 	@Override

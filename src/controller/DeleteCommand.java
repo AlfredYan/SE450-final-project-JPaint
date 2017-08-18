@@ -2,13 +2,15 @@ package controller;
 
 import ControllerInterfaces.ICommand;
 import ControllerInterfaces.IUndoable;
+import model.DeleteOperation;
+import modelInterfaces.IDeleteOperation;
 import modelInterfaces.IShapeList;
 
 public class DeleteCommand implements ICommand, IUndoable {
-	private final DeleteOperation _deleteOperation;
+	private final IDeleteOperation _deleteOperation;
 	
-	public DeleteCommand(IShapeList shapeList) {
-		_deleteOperation = new DeleteOperation(shapeList);
+	public DeleteCommand(IDeleteOperation deleteOperation) {
+		_deleteOperation = deleteOperation;
 	}
 
 	@Override

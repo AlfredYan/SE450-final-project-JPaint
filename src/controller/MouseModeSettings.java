@@ -42,13 +42,11 @@ public class MouseModeSettings implements IDialogChoice, IMouseModeSubject {
 
 	@Override
 	public void registerObserver(IMouseModeObserver mouseModeObserver) {
-		// TODO Auto-generated method stub
 		mouseModeObservers.add(mouseModeObserver);
 	}
 
 	@Override
 	public void notifyObserver() {
-		// TODO Auto-generated method stub
 		for(IMouseModeObserver mouseModeObserver : mouseModeObservers) {
 			mouseModeObserver.update(currentMouseMode);
 		}

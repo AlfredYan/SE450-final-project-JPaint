@@ -20,8 +20,9 @@ public class GuiWindow extends JFrame implements IGuiWindow {
     	= new Insets(5, 15, 5, 15);
     private final Map<EventName, JButton> eventButtons = new HashMap<>();
     private final PaintCanvas canvas;
+    private final GuiKeyboardHandler _keyboardHandler;
  
-    public GuiWindow(PaintCanvas canvas){
+    public GuiWindow(PaintCanvas canvas, GuiKeyboardHandler keyboardHandler){
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(defaultTitle);
@@ -29,7 +30,9 @@ public class GuiWindow extends JFrame implements IGuiWindow {
         setResizable(false);
         JPanel window = createWindow();
         this.canvas = canvas;
+        _keyboardHandler = keyboardHandler;
         window.add(canvas, BorderLayout.CENTER);
+        this.addKeyListener(_keyboardHandler);
 		validate();
     }
 

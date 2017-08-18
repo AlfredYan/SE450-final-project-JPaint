@@ -1,15 +1,15 @@
 package controller;
 
 import ControllerInterfaces.IUndoable;
-import modelInterfaces.IShapeList;
+import modelInterfaces.IMoveOperation;
 import viewInterfaces.IStartAndEndPointCommand;
 
 public class MoveCommand implements IStartAndEndPointCommand, IUndoable {
 
-	private final MoveOperation _moveOperation;
+	private final IMoveOperation _moveOperation;
 
-	public MoveCommand(IShapeList shapeList) {
-		_moveOperation = new MoveOperation(shapeList);
+	public MoveCommand(IMoveOperation moveOperation) {
+		_moveOperation = moveOperation;
 	}
 
 	@Override

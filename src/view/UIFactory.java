@@ -5,6 +5,7 @@ import controller.SingletonStartAndEndPointCommandFactory;
 import modelInterfaces.IShapeList;
 import view.CmdUiModule.Cmd;
 import view.GuiUiModule.Gui;
+import view.GuiUiModule.GuiKeyboardHandler;
 import view.GuiUiModule.GuiMouseHandler;
 import viewInterfaces.IStartAndEndPointCommandFactory;
 import viewInterfaces.InvalidUIException;
@@ -22,7 +23,8 @@ public class UIFactory {
                 break;
             case GUI:
             		PaintCanvas canvas = new PaintCanvas();
-                ui = new Gui(new GuiWindow(canvas));
+                GuiKeyboardHandler keyboardHandler = new GuiKeyboardHandler(shapeList);
+                ui = new Gui(new GuiWindow(canvas, keyboardHandler), keyboardHandler);
                 IStartAndEndPointCommandFactory startAndEndPointCommandFactory = SingletonStartAndEndPointCommandFactory.getInstance();
                 startAndEndPointCommandFactory.setParameters(settings, shapeList, canvas);
                 GuiMouseHandler mouseHandler = new GuiMouseHandler();

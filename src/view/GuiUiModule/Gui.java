@@ -10,15 +10,18 @@ import view.IGuiWindow;
 public class Gui implements UIModule {
 
     private final IGuiWindow gui;
+    private final GuiKeyboardHandler _keyboardHandler;
 
-    public Gui(IGuiWindow gui) {
+    public Gui(IGuiWindow gui, GuiKeyboardHandler keyboardHandler) {
         this.gui = gui;
+        _keyboardHandler = keyboardHandler;
     }
     
 	@Override
 	public void addEvent(EventName eventName, ICommand command) {
 		JButton button = gui.getButton(eventName);
 		button.addActionListener((ActionEvent) -> command.run());
+		button.addKeyListener(_keyboardHandler);
 	}
 
     @Override

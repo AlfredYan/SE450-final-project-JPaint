@@ -9,32 +9,25 @@ import viewInterfaces.IStartAndEndPointCommand;
 public class CreateShapeCommand implements IStartAndEndPointCommand, IUndoable {
 	
 	private final IShapeFactory _shapeFactory;
-	private final IShapeList _shapeList;
-	private IDisplayableShape _displayableShape;
 	
-	public CreateShapeCommand(IShapeFactory shapeFactory, IShapeList shapeList) {
+	public CreateShapeCommand(IShapeFactory shapeFactory) {
 		_shapeFactory = shapeFactory;
-		_shapeList = shapeList;
 	}
 
 	@Override
 	public void run(Point startingPoint, Point endingPoint) throws Exception {
-		_displayableShape = _shapeFactory.create(startingPoint, endingPoint);
+		_shapeFactory.create(startingPoint, endingPoint);
 		CommandHistory.add(this);
 	}
 
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
-		_shapeList.removeShape(_displayableShape);
-		_shapeList.notifyObesrver();
+		_shapeFactory.undoCreateShape();
 	}
 
 	@Override
 	public void redo() {
-		// TODO Auto-generated method stub
-		_shapeList.addToList(_displayableShape);
-		_shapeList.notifyObesrver();
+		_shapeFactory.redoCreateShpae();
 	}
 
 }

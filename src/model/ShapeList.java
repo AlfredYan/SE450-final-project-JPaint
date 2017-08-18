@@ -22,7 +22,6 @@ public class ShapeList implements IShapeList {
 	@Override
 	public void addToList(IDisplayableShape displayableShape) {
 		_shapelist.add(displayableShape);
-//		notifyObesrver();
 	}
 
 	@Override

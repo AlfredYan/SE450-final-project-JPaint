@@ -1,10 +1,13 @@
-package controller;
+package model;
 
+import controller.Point;
+import controller.Shape;
 import modelInterfaces.IDisplayableShape;
+import modelInterfaces.ISelectOperation;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 
-public class SelectOperation {
+public class SelectOperation implements ISelectOperation{
 
 	private final IShapeList _shapeList;
 	private final ISelectedShapeList _selectedShapeList;
@@ -14,6 +17,7 @@ public class SelectOperation {
 		_selectedShapeList = shapeList;
 	}
 	
+	@Override
 	public void selectShapes(Point startingPoint, Point endingPoint) {
 		addSeletedShapes(startingPoint, endingPoint);
 	}

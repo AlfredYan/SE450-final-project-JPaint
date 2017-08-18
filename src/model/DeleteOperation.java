@@ -1,12 +1,13 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 
+import modelInterfaces.IDeleteOperation;
 import modelInterfaces.IDisplayableShape;
 import modelInterfaces.ISelectedShapeList;
 import modelInterfaces.IShapeList;
 
-public class DeleteOperation {
+public class DeleteOperation implements IDeleteOperation{
 	private final IShapeList _shapeList; 
 	private final ISelectedShapeList _selectedShapeList; 
 	private final ArrayList<IDisplayableShape> _undoableSelectedShapelist = new ArrayList<IDisplayableShape>();
@@ -16,15 +17,18 @@ public class DeleteOperation {
 		_selectedShapeList = shapeList;
 	}
 	
+	@Override
 	public void deleteShapes() {
 		cacheToUndoableList(_selectedShapeList.getSelectedArrayList());
 		removeShapes(_selectedShapeList.getSelectedArrayList());
 	}
 	
+	@Override
 	public void undoDelete() {
 		addShapes(_undoableSelectedShapelist);
 	}
 	
+	@Override
 	public void redoDelete() {
 		removeShapes(_undoableSelectedShapelist);
 	}

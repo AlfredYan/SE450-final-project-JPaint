@@ -2,14 +2,16 @@ package controller;
 
 import ControllerInterfaces.ICommand;
 import ControllerInterfaces.IUndoable;
+import model.PasteOperation;
+import modelInterfaces.IPasteOperation;
 import modelInterfaces.IShapeList;
 
 public class PasteCommand implements ICommand, IUndoable {
 	
-	private final PasteOperation _pasteOperation;
+	private final IPasteOperation _pasteOperation;
 	
-	public PasteCommand(IShapeList shapeList) {
-		_pasteOperation = new PasteOperation(shapeList);
+	public PasteCommand(IPasteOperation pasteOperation) {
+		_pasteOperation = pasteOperation;
 	}
 
 	@Override

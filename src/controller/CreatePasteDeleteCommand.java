@@ -1,6 +1,8 @@
 package controller;
 
 import ControllerInterfaces.ICommand;
+import model.DeleteOperation;
+import model.PasteOperation;
 import modelInterfaces.IShapeList;
 import viewInterfaces.EventName;
 
@@ -20,10 +22,10 @@ public class CreatePasteDeleteCommand implements ICommand {
 		
 		switch (_eventName) {
 		case PASTE:
-			command = new PasteCommand(_shapeList);
+			command = new PasteCommand(new PasteOperation(_shapeList));
 			break;
 		case DELETE:
-			command = new DeleteCommand(_shapeList);
+			command = new DeleteCommand(new DeleteOperation(_shapeList));
 			break;
 		default:
 			return;

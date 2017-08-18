@@ -1,5 +1,6 @@
 package controller;
 
+import model.CopyOperation;
 import modelInterfaces.IShapeList;
 import viewInterfaces.EventName;
 import viewInterfaces.UIModule;
@@ -28,7 +29,7 @@ public class JPaintController implements IPaintController {
         _uiModule.addEvent(EventName.CHOOSE_SECONDARY_COLOR, new SelectSecondaryColorCommand(_settings.getSecondaryColorSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_SHADING_TYPE, new SelectShadingTypeCommand(_settings.getShadingTypeSettings(), _uiModule));
         _uiModule.addEvent(EventName.CHOOSE_MOUSE_MODE, new SelectMouseModeCommand(_settings.getMouseModeSettings(), _uiModule));
-        _uiModule.addEvent(EventName.COPY, new CopyCommand(_shapeList));
+        _uiModule.addEvent(EventName.COPY, new CopyCommand(new CopyOperation(_shapeList)));
         _uiModule.addEvent(EventName.PASTE, new CreatePasteDeleteCommand(EventName.PASTE, _shapeList));
         _uiModule.addEvent(EventName.DELETE, new CreatePasteDeleteCommand(EventName.DELETE, _shapeList));
         _uiModule.addEvent(EventName.REDO, new RedoCommand());

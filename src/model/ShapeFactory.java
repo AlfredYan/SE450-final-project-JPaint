@@ -18,6 +18,7 @@ public class ShapeFactory implements IShapeFactory{
 	private final IShapeList _shapeList;
 	private final IViewShapeFactory _viewShapeFactory;
 	private final IDisplayableShapeFactory _displayableShapeFactory;
+	private IDisplayableShape _displayableShape;
 	
 
 	public ShapeFactory(ApplicationSettings settings, IShapeList shapeList, 
@@ -29,12 +30,24 @@ public class ShapeFactory implements IShapeFactory{
 	}
 
 	@Override
-	public IDisplayableShape create(Point startingPoint, Point endingPoint) throws Exception {
+	public void create(Point startingPoint, Point endingPoint) throws Exception {
 		IViewShape viewShape = getIViewShape(startingPoint, endingPoint);
 		IDisplayableShape displayableShape = getIDiplayableShape(viewShape);
+		_displayableShape = displayableShape;
 		_shapeList.addToList(displayableShape);
 		_shapeList.notifyObesrver();
-		return displayableShape;
+	}
+	
+	@Override
+	public void undoCreateShape() {
+		_shapeList.removeShape(_displayableShape);
+		_shapeList.notifyObesrver();
+	}
+	
+	@Override
+	public void redoCreateShpae() {
+		_shapeList.addToList(_displayableShape);
+		_shapeList.notifyObesrver();
 	}
 	
 	private IViewShape getIViewShape(Point startingPoint, Point endingPoint) throws Exception {

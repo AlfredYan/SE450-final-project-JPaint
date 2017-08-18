@@ -1,14 +1,14 @@
 package controller;
 
-import modelInterfaces.IShapeList;
+import modelInterfaces.ISelectOperation;
 import viewInterfaces.IStartAndEndPointCommand;
 
 public class SelectCommand implements IStartAndEndPointCommand {
 	
-	private final SelectOperation _selectOperation;
+	private final ISelectOperation _selectOperation;
 
-	public SelectCommand(IShapeList shapeList) {
-		_selectOperation = new SelectOperation(shapeList);
+	public SelectCommand(ISelectOperation selectOperation) {
+		_selectOperation = selectOperation;
 	}
 	
 	@Override
